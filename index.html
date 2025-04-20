@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class 1 to 12 Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .quiz-container {
+      margin-top: 30px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question p {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Quiz Generator for Class 1 to 12</h1>
+
+<label for="classSelect">Select Class:</label>
+<select id="classSelect">
+  <!-- Dynamically generated options for class 1 to 12 -->
+  <script>
+    for (let i = 1; i <= 12; i++) {
+      document.write(`<option value="Class ${i}">Class ${i}</option>`);
+    }
+  </script>
+</select>
+
+<label for="subjectSelect">Select Subject:</label>
+<select id="subjectSelect">
+  <option value="Math">Math</option>
+  <option value="Science">Science</option>
+  <option value="English">English</option>
+  <option value="Social Studies">Social Studies</option>
+  <option value="Computer">Computer</option>
+  <option value="Hindi">Hindi</option>
+</select>
+
+<button onclick="loadQuiz()">Load Quiz</button>
+
+<div class="quiz-container" id="quizContainer">
+  <!-- Questions will be loaded here -->
+</div>
+
+<script>
+function loadQuiz() {
+  const quizContainer = document.getElementById("quizContainer");
+  quizContainer.innerHTML = ""; // Clear previous quiz
+  const selectedClass = document.getElementById("classSelect").value;
+  const selectedSubject = document.getElementById("subjectSelect").value;
+
+  // Dummy question generation for demo purposes
+  for (let i = 1; i <= 25; i++) {
+    const questionDiv = document.createElement("div");
+    questionDiv.classList.add("question");
+    questionDiv.innerHTML = `
+      <p>Q${i}. [${selectedClass} - ${selectedSubject}] Sample question ${i}?</p>
+      <label><input type="radio" name="q${i}"> Option A</label><br>
+      <label><input type="radio" name="q${i}"> Option B</label><br>
+      <label><input type="radio" name="q${i}"> Option C</label><br>
+      <label><input type="radio" name="q${i}"> Option D</label>
+    `;
+    quizContainer.appendChild(questionDiv);
+  }
+}
+</script>
+
+</body>
+</html>
